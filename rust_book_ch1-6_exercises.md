@@ -1,6 +1,7 @@
 # Rust Book Ch 1–6: Practice Exercises
 
 How to use this file:
+
 - Make one Cargo project per chapter: `cargo new ch03_exercises`, and so on.
 - Try each exercise before reading the tip. Tips name the tool or concept, not the answer.
 - Run `cargo clippy` after each exercise. It teaches idiomatic Rust faster than anything else.
@@ -19,6 +20,7 @@ How to use this file:
 **E1.3** Print a simple multiplication table from 1 to 5 using only `println!`. Use `{}` placeholders, not string concatenation.
 
 **Tips**
+
 - `cargo check` only type-checks and is faster. Use it while iterating.
 - `println!` is a macro (note the `!`). Format arguments go in `{}`.
 - `{:?}` prints debug output. You'll use it a lot.
@@ -38,6 +40,7 @@ How to use this file:
 **E2.4** Wrap E2.3 in a game loop that stops on a correct guess and counts attempts.
 
 **Tips**
+
 - `cmp` returns an `Ordering`. Match on `Ordering::Less`, `Greater`, `Equal`.
 - `trim()` removes the newline from `read_line`. Forgetting it is a classic bug.
 - `parse::<u32>()` returns a `Result`. The turbofish `::<>` tells it the target type.
@@ -59,9 +62,10 @@ How to use this file:
 
 **E3.5** Use a labeled `break` to find the first pair `(i, j)` with `i` and `j` from 1 to 10 where `i * j == 42`. Print it.
 
-**E3.6** Destructure a tuple `(i32, f64, char)` into three variables and print them.
+**E3.	6** Destructure a tuple `(i32, f64, char)` into three variables and print them.
 
 **Tips**
+
 - `for x in 0..n` excludes `n`. `0..=n` includes it.
 - Shadowing lets you change a type: `let spaces = "   "; let spaces = spaces.len();`.
 - Integer overflow panics in debug builds. Try `255u8 + 1` to see it.
@@ -87,6 +91,7 @@ How to use this file:
 **E4.6** Given `let a = [1, 2, 3, 4, 5];`, write `fn sum(slice: &[i32]) -> i32` and call it with `&a[1..4]`.
 
 **Tips**
+
 - Ask yourself: "Who owns this value right now?" before every line that moves or borrows.
 - `i32`, `bool`, `char`, and tuples of them are `Copy`. `String` and `Vec` are not.
 - Prefer `&str` in function parameters. It accepts both `String` and string literals.
@@ -106,6 +111,7 @@ How to use this file:
 **E5.3** Define a tuple struct `Point3(f64, f64, f64)` and a method `fn distance_from_origin(&self) -> f64`.
 
 **E5.4** Implement `Rectangle` with fields `width` and `height`, plus:
+
 - `fn area(&self) -> u32`
 - `fn can_hold(&self, other: &Rectangle) -> bool`
 - `fn square(size: u32) -> Self` as an associated function
@@ -115,6 +121,7 @@ How to use this file:
 **E5.6** Use `dbg!` on an expression inside a method. Remove it after you've seen the output.
 
 **Tips**
+
 - Use `&self` for read-only methods, `&mut self` for mutation, and `self` only when the method consumes the value.
 - `Self::square(5)` and `Rectangle::square(5)` are both associated function calls. No `self` parameter.
 - `#[derive(Debug)]` is required before `{:?}` works on your struct.
@@ -142,6 +149,7 @@ How to use this file:
 **E6.7** Use `let else` to extract a number from a `Option<&str>` and parse it, returning early if it fails.
 
 **Tips**
+
 - `match` must be exhaustive. If the compiler complains about a missing arm, read it. It's telling you a case you forgot.
 - Use `_` when you genuinely don't care about a value. Use `_name` if you want to silence the unused-variable warning but keep the name.
 - `if let Some(x) = opt { }` is `match` with one arm. Use it when you only care about one case.
@@ -154,6 +162,7 @@ How to use this file:
 ## Bonus: Mixed Exercise
 
 Build a small **inventory tracker** in one project that uses everything above:
+
 - A `struct Item { name: String, qty: u32, price_cents: u32 }`
 - An `enum Command { Add(Item), Remove(String), Restock(String, u32), Report }`
 - A function `fn apply(inventory: &mut Vec<Item>, cmd: Command) -> Result<(), String>`. Return an error string for unknown items.
