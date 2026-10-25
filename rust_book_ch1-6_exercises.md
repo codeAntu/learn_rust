@@ -88,7 +88,7 @@ How to use this file:
 
 **E4.5** Write `fn first_word_index(s: &str) -> usize` that returns the index of the first space. Then use it to slice the string. Notice how the index can go stale if the string changes. This is the motivation for borrow rules.
 
-**E4.6** Given `let a = [1, 2, 3, 4, 5];`, write `fn sum(slice: &[i32]) -> i32` and call it with `&a[1..4]`.
+**E4.6** Given `let a = [1, 2, 3, 4, 5];`, write `fn sum(slice: &[i32]) -					> i32` and call it with `&a[1..4]`.
 
 **Tips**
 
